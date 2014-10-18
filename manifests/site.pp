@@ -12,8 +12,28 @@ node default {
         ensure  => latest,
         require => Package[linux-headers]
     }
+    # Browsers
+    package { ['google-chrome','firefox','opera'/*,'internet-explorer'*/]:
+        ensure => latest,
+        require => Class[aur]
+    }
+    # Editors
+    package { ['vim','sublime-text','kdesdk-kate','gvim','vim-python3','vim-plugins','vim-python']:
+        ensure => latest,
+        require => Class[aur]
+    }
+    # Shells
+    package { ['bash','zsh','oh-my-zsh-git','fish']:
+        ensure => latest,
+        require => Class[aur]
+    }
+    # IRC
+    package { ['weechat','irssi','hexchat']:
+        ensure => latest,
+        require => Class[aur]
+    }
     # Utilities
-    package { ['screen','puppet','tmux','minecraft']:
+    package { ['screen','puppet','tmux','minecraft','wgetpaste','imagemagick','thunderbird','gnu-netcat','dnsutils','libzip','p7zip','tar']:
         ensure  => latest,
         require => Class[aur]
     }
