@@ -20,7 +20,8 @@ node default {
     # Editors
     package { ['vim','sublime-text','kdesdk-kate','vim-python3','vim-plugins','vim-python']:
         ensure => latest,
-        require => Class[aur]
+        require => Class[aur],
+        install_options => '--needed'
     }
     # Shells
     package { ['bash','zsh','oh-my-zsh-git','fish']:
