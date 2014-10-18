@@ -1,0 +1,42 @@
+{
+  "project_page": "https://github.com/thias/puppet-libvirt",
+  "license": "Apache 2.0",
+  "source": "git://github.com/thias/puppet-libvirt",
+  "types": [
+
+  ],
+  "description": "Install, configure and enable libvirt.",
+  "version": "0.2.3",
+  "summary": "Libvirt virtualization API and capabilities",
+  "name": "thias-libvirt",
+  "author": "Matthias Saou",
+  "checksums": {
+    "templates/sysconfig/libvirtd.orig": "27b2a24cdd593fdfe31ee461d512b127",
+    "templates/lxc.conf.orig": "83460b0682e1f90f06e028d6606ad6c5",
+    "spec/defines/network_spec.rb": "94847fa68b5b7661ff539e3d8fb4bea9",
+    "templates/qemu.conf.orig": "0d8fb392b0b4840ede79e2f74366fe6b",
+    "manifests/network.pp": "6af43d89a1872e81ca75d867af584337",
+    "templates/sysconfig/libvirtd.erb": "f30d9d2171158d7043ee558ae6e61207",
+    "spec/classes/libvirt_spec.rb": "1ceca9b20a982ed994f388006eaac625",
+    "spec/spec_helper.rb": "0db89c9a486df193c0e40095422e19dc",
+    "Rakefile": "4015136f7daac98ac3e5b1a0ede47a5e",
+    "templates/libvirtd.conf.orig": "4df72874d749ab9e6e6e030feaf83f00",
+    "README.md": "dccaec26465d671626d4c4db15475e3e",
+    "spec/system/network_spec.rb": "cd16ae4f39fd90a2a281021cda56d6cf",
+    "tests/init.pp": "54c7677bd28d1a6290a92f9d02459d15",
+    "LICENSE": "63f96c99cc44c3d16af914ff2568e0a4",
+    "templates/libvirt.conf.orig": "de4153ce1fd66c647bd634d65d3713ac",
+    "Modulefile": "762165badaaaf089e5f18ff13955b1b1",
+    "manifests/init.pp": "71ae46d4eebe450140cd9c6b002a0054",
+    "templates/network.xml.erb": "6ed9eada3b13a1d3a0533cc0702b2fcf",
+    "spec/system/class_spec.rb": "851243a70b4e2a90f2680515d7481b99",
+    "templates/libvirtd.conf.erb": "cff6e51ef3c4bc58feb1609534435a2d",
+    "spec/spec_helper_system.rb": "c8fbfce2a3a9c2d87b37acbdd4974a99",
+    "manifests/params.pp": "83cce4d968cda36d069ad72035e9af84",
+    "Gemfile": "cc6e3e3500f43534e4f28d725b52323b",
+    "ChangeLog": "729182e01e1c8f5490429368ac650063"
+  },
+  "dependencies": [
+
+  ]
+}
