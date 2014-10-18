@@ -12,7 +12,8 @@ node default {
         ensure  => latest,
         require => Package[linux-headers]
     }
-    package { ['screen','puppet','tmux']:
+    # Utilities
+    package { ['screen','puppet','tmux','minecraft']:
         ensure  => latest,
         require => Class[aur]
     }
