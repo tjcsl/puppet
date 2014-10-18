@@ -35,7 +35,7 @@ node default {
         require => Class[aur]
     }
     # Utilities
-    package { ['screen','puppet','tmux','minecraft','wgetpaste','imagemagick','thunderbird','gnu-netcat','dnsutils','libzip','p7zip','tar','mathematica','flashplugin-10','matlab','wireshark-cli','wireshark-gtk','openmpi','oraclejdk7-64','oraclejdk8-64']:
+    package { ['screen','puppet','tmux','minecraft','wgetpaste','imagemagick','thunderbird','gnu-netcat','dnsutils','libzip','p7zip','tar','mathematica','flashplugin','matlab','wireshark-cli','wireshark-gtk','openmpi','oraclejdk7-64','oraclejdk8-64']:
         ensure  => latest,
         require => Class[aur]
     }
