@@ -18,7 +18,7 @@ node default {
         require => Class[aur]
     }
     # Editors
-    package { ['vim','sublime-text','kdesdk-kate','vim-python3','vim-plugins','vim-python']:
+    package { ['vim','sublime-text','kdesdk-kate','vim-plugins','vim-python']:
         ensure => latest,
         require => Class[aur],
         install_options => '--needed'
