@@ -2,6 +2,7 @@ node default {
     include ssh
     include aur
     include xserver
+    include cups
     class { '::ntp':
           servers => [ 'ntp1.tjhsst.edu', 'ntp2.tjhsst.edu' ],
     }
@@ -13,12 +14,12 @@ node default {
         require => Package[linux-headers]
     }
     # Browsers
-    package { ['google-chrome','firefox','opera'/*,'internet-explorer'*/]:
+    package { ['google-chrome','firefox','opera','eureka'/*,'internet-explorer'*/]:
         ensure => latest,
         require => Class[aur]
     }
     # Editors
-    package { ['vim','sublime-text','kdesdk-kate','vim-plugins','vim-python']:
+    package { ['vim','sublime-text','kdesdk-kate','vim-plugins','vim-python','pycharm-community','jgrasp']:
         ensure => latest,
         require => Class[aur],
         install_options => '--needed'
@@ -34,7 +35,7 @@ node default {
         require => Class[aur]
     }
     # Utilities
-    package { ['screen','puppet','tmux','minecraft','wgetpaste','imagemagick','thunderbird','gnu-netcat','dnsutils','libzip','p7zip','tar']:
+    package { ['screen','puppet','tmux','minecraft','wgetpaste','imagemagick','thunderbird','gnu-netcat','dnsutils','libzip','p7zip','tar','mathematica','flashplugin-10','matlab','wireshark-cli','wireshark-gtk','openmpi']:
         ensure  => latest,
         require => Class[aur]
     }

@@ -1,131 +1,14 @@
 {
-  "name": "mosen-cups",
-  "version": "1.3.0",
-  "source": "https://github.com/mosen/puppet-cups.git",
-  "author": "mosen",
-  "license": "MIT",
-  "summary": "Manage printers using the cups admin tools",
-  "description": "Manage CUPS queues and default options via the CUPS command line utilities.",
-  "project_page": "UNKNOWN",
+  "name": "tjcsl-cups",
+  "version": "0.1.0",
+  "author": "tjcsl",
+  "summary": null,
+  "license": "Apache 2.0",
+  "source": "",
+  "project_page": null,
+  "issues_url": null,
   "dependencies": [
-
-  ],
-  "types": [
-    {
-      "name": "printer",
-      "doc": "Manage installed printers and printer queues on a puppet node.",
-      "properties": [
-        {
-          "name": "ensure",
-          "doc": "The basic property that the resource should be in.  Valid values are `present`, `absent`."
-        },
-        {
-          "name": "uri",
-          "doc": "Sets the device-uri attribute of the printer destination."
-        },
-        {
-          "name": "description",
-          "doc": "Provides a textual description of the destination."
-        },
-        {
-          "name": "location",
-          "doc": "Provides a textual location of the destination."
-        },
-        {
-          "name": "enabled",
-          "doc": "Enables the destination and accepts jobs  Valid values are `true`, `false`."
-        },
-        {
-          "name": "accept",
-          "doc": "Specifies whether the destination will accept jobs, or reject them.  Valid values are `true`, `false`."
-        },
-        {
-          "name": "options",
-          "doc": "Sets a list of options for the printer"
-        },
-        {
-          "name": "ppd_options",
-          "doc": "Sets a list of PPD (vendor specific) options for the printer.\n\n    Use lpoptions -p destination -l to get a list of valid vendor PPD options for that queue."
-        }
-      ],
-      "parameters": [
-        {
-          "name": "name",
-          "doc": "The name of the printer, any character except SPACE, TAB, / or #, Not case sensitive"
-        },
-        {
-          "name": "model",
-          "doc": "Sets a standard System V interface script or PPD file for the printer from the model directory.\n\n    Use the -m option with the lpinfo(8) command to get a list of supported models.\n    "
-        },
-        {
-          "name": "ppd",
-          "doc": "Specifies a PostScript Printer Description file to use with the printer."
-        },
-        {
-          "name": "interface",
-          "doc": "Specifies a System V interface file to use with the printer."
-        },
-        {
-          "name": "shared",
-          "doc": "Sets the destination to shared/published or unshared/unpublished.  Valid values are `true`, `false`."
-        }
-      ],
-      "providers": [
-        {
-          "name": "cups",
-          "doc": "This provider manages installed printers using CUPS command line tools\n\n  The provider is developed under Mac OS X but is intended to work with any unix/linux distribution\n  supported by CUPS.\n\n  The device uri isn't validated as the provider doesn't determine which uri's are available.\n  You will need to check that your uri is valid. You can get a list of valid uri's by executing:\n\n  $ lpinfo -v\n\n  See the lpinfo(8) man page for more detail.\n\n  If you use the model parameter to select your printer model, it should be one of the valid models listed by lpinfo\n  like so:\n\n  $ lpinfo -m\n\n  The model cannot be determined after the printer has been created, so it usually can't be changed after you create\n  a printer.\n  \n\nRequired binaries: `/usr/sbin/lpadmin`, `/usr/bin/lpoptions`, `/usr/bin/lpstat`, `/usr/sbin/cupsenable`, `/usr/sbin/cupsdisable`, `/usr/sbin/cupsaccept`, `/usr/sbin/cupsreject`."
-        }
-      ]
-    },
-    {
-      "name": "printer_defaults",
-      "doc": "Sets the global defaults for all printers on the system.",
-      "properties": [
-        {
-          "name": "ensure",
-          "doc": "The basic property that the resource should be in.  Valid values are `present`, `absent`."
-        },
-        {
-          "name": "value",
-          "doc": "The default value of the option being set."
-        }
-      ],
-      "parameters": [
-        {
-          "name": "name",
-          "doc": "The name of the option to set the default for."
-        }
-      ],
-      "providers": [
-        {
-          "name": "cups_options",
-          "doc": "This provider manages default printer options by executing lpoptions(1) as the root user.\n\n  The root options are saved under /etc/cups/lpoptions.\n\n  Note: On Mac OS X the default lpoptions do not correlate with the print dialog. The default printer and default media\n  are selected by ~/Library/Preferences/com.apple.print.PrintingPrefs.plist (10.6) and submitted with the job options.\n\n  Classes are parsed as normal printer destinations at the moment, and are interpreted as such.\n  \n\nRequired binaries: `/usr/bin/lpoptions`."
-        }
-      ]
-    }
-  ],
-  "checksums": {
-    "Gemfile.lock": "f5288bd5404e140a0d8d5059e5bc6c84",
-    "Modulefile": "cd15f69acf9acc74a112736a56afb841",
-    "README.md": "8d2efba8c2a44172918a24193965853a",
-    "Rakefile": "c900058a4d67ff5e864eaa3349b345cd",
-    "cups.iml": "d753d5e64b29228a39d85db6190d91ff",
-    "lib/facter/printers.rb": "60a799674cfcd274c6044f01c50ddbdc",
-    "lib/puppet/provider/printer/cups.rb": "cae4c8171e5bc17a7e7c0bd9b46b11cb",
-    "lib/puppet/provider/printer_defaults/cups_options.rb": "8de5b91b26b8a44868a92883156b26a0",
-    "lib/puppet/type/printer.rb": "43d4afec6f1dec18296aca4b8b65d5e7",
-    "lib/puppet/type/printer_defaults.rb": "21102db755d85cde63e46cad8332b7e8",
-    "spec/monkey_patches/alias_should_to_must.rb": "7cd4065c63f06f1ab3aaa1c5f92af947",
-    "spec/monkey_patches/publicize_methods.rb": "1b03a4af94f7dac35f7c2809caf372ca",
-    "spec/puppet_spec/files.rb": "34e40f4dcdc90d1138a471d883c33d79",
-    "spec/puppet_spec/fixtures.rb": "147446d18612c8395ac65be10b1cd9ab",
-    "spec/puppet_spec/matchers.rb": "8e77dc7317de7fc2ff289fb716623b6c",
-    "spec/puppet_spec/verbose.rb": "2e0e0e74f2c5ec0408d455e773755bf9",
-    "spec/spec_helper.rb": "275530396ff51fcaa2ecb3baeca5b8ab",
-    "spec/unit/provider/cups_options_spec.rb": "d41d8cd98f00b204e9800998ecf8427e",
-    "spec/unit/provider/cups_spec.rb": "24e87b2877b72bf15e64f5e051a4b15e",
-    "spec/unit/type/printer_defaults_spec.rb": "d41d8cd98f00b204e9800998ecf8427e",
-    "spec/unit/type/printer_spec.rb": "85a287eb7256f92928eed9dd3fea6391",
-    "tests/init.pp": "821c9fee7b20e3b55042b129a58188d3"
-  }
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+  ]
 }
+
