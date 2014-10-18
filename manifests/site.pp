@@ -14,7 +14,7 @@ node default {
         require => Package[linux-headers]
     }
     # Browsers
-    package { ['google-chrome','firefox','opera','eureka'/*,'internet-explorer'*/]:
+    package { ['google-chrome','firefox','opera'/*,'internet-explorer'*/]:
         ensure => latest,
         require => Class[aur]
     }
