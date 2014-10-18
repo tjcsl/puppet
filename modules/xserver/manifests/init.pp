@@ -1,7 +1,7 @@
 class xserver {
     # Driver
     exec { 'nvidia-dkms':
-        command => '/usr/bin/yes | /usr/bin/yaourt --noprogressbar --needed -Sy nvidia-dkms',
+        command => '/usr/bin/yes | /usr/bin/yaourt --noprogressbar --needed -Sy nvidia-dkms && modprobe nvidia',
     }
 
     # Update module on kernel update
