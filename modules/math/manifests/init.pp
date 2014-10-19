@@ -19,7 +19,7 @@ class math {
     }
     exec { 'mathematica':
         path => '/usr/bin/:/bin/',
-        command => 'cd /tmp/yaourt-tmp-root/aur-mathematica/;wget https://aur.archlinux.org/packages/ma/mathematica/mathematica.tar.gz;tar -xf mathematica.tar.gz mathematica/;makepkg -csir;cd ..;rm -rf aur-mathematica;',
+        command => "sh -c 'cd /tmp/yaourt-tmp-root/aur-mathematica/;wget https://aur.archlinux.org/packages/ma/mathematica/mathematica.tar.gz;tar -xf mathematica.tar.gz mathematica/;makepkg -csir;cd ..;rm -rf aur-mathematica;'",
         unless => 'which math',
         require => [File['/tmp/yaourt-tmp-root/aur-mathematica/Mathematica_10.0.1_LINUX.sh'],Class[aur]]
     }
