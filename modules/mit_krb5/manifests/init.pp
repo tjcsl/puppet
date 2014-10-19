@@ -287,6 +287,6 @@ class mit_krb5(
     mode => 600,
     owner => root,
     group => root,
-    source => 'puppet:///modules/mit_krb5/$::hostname.keytab'
+    source => "puppet:///modules/mit_krb5/$::hostname.keytab"
   }
 }
