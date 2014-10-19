@@ -13,7 +13,7 @@ class math {
         target => '/opt/Mathematica_10.0.1_LINUX.sh',
         require => [File['/tmp/yaourt-tmp-root/aur-mathematica/'],File['/opt/Mathematica_10.0.1_LINUX.sh']]
     }
-    file { '/opt/mathematica/Configuration/Licensing/mathpass':
+    file { '/opt/Mathematica/Configuration/Licensing/mathpass':
         ensure => file,
         source => 'puppet:///modules/math/mathpass',
         require => Exec[mathematica]
