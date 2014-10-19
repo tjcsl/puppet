@@ -19,13 +19,18 @@ node default {
         require => Class[aur]
     }
     # Editors
-    package { ['vim','emacs','ed','hexedit','nano','sublime-text','kdesdk-kate','vim-plugins','vim-python','pycharm-community','jgrasp','netbeans','eclipse','android-studio','geany','appinventor','texlive-most','bless']:
+    package { ['vim','emacs','ed','hexedit','nano','sublime-text','kdesdk-kate',\
+        'vim-plugins','vim-python','pycharm-community','jgrasp','netbeans','eclipse',\
+        'android-studio','geany','appinventor','texlive-most','bless']:
         ensure => latest,
         require => Class[aur],
         install_options => '--needed'
     }
     # Python Packages
-    package { ['python-beautifulsoup4','python2-beautifulsoup4','python-dnspython','python2-dnspython','python-pymysql','python2-pymysql','python2-pygame','pypy','pypy3','python-virtualenv','python2-virtualenv','python-sqlalchemy','python2-sqlalchemy','python2-ldap','python-scipy','python2-scipy']:
+    package { ['python-beautifulsoup4','python2-beautifulsoup4','python-dnspython',\
+        'python2-dnspython','python-pymysql','python2-pymysql','python2-pygame','pypy',\
+        'pypy3','python-virtualenv','python2-virtualenv','python-sqlalchemy',\
+        'python2-sqlalchemy','python2-ldap','python-scipy','python2-scipy']:
         ensure => latest,
         require => Class[aur]
     }
@@ -75,7 +80,8 @@ node default {
         require => Class[aur]
     }
     # Networking
-    package { ['gnu-netcat','dnsutils','wireshark-cli','wireshark-gtk','openmpi','traceroute','iftop','iputils','jnettop','nmap','tcptrack','wakeonlan','ethtool']:
+    package { ['gnu-netcat','dnsutils','wireshark-cli','wireshark-gtk','openmpi','traceroute',\
+        'iftop','iputils','jnettop','nmap','tcptrack','wakeonlan','ethtool']:
         ensure => latest,
         require => Class[aur]
     }
@@ -95,7 +101,9 @@ node default {
         require => Class[aur]
     }   
     # Misc Utilities
-    package { ['screen','puppet','tmux','flashplugin','oraclejdk7-64','oraclejdk8-64','acroread','toilet','winetricks','binwalk','figlet','sl','mono','skipfish','strace','valgrind','htop','acpid']:
+    package { ['screen','puppet','tmux','flashplugin','oraclejdk7-64','oraclejdk8-64','acroread',\
+        'toilet','winetricks','binwalk','figlet','sl','mono','skipfish','strace','valgrind',\
+        'htop','acpid']:
         ensure  => latest,
         require => Class[aur]
     }
