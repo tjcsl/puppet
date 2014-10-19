@@ -15,7 +15,7 @@ class math {
     file { '/opt/mathematica/Configuration/Licensing/mathpass':
         ensure => file,
         source => 'puppet:///modules/math/mathpass',
-        require => Package[mathematica]
+#        require => Package[mathematica]
     }
     /*package { 'mathematica':
         ensure => installed,
