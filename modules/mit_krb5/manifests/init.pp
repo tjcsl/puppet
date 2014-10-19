@@ -280,4 +280,13 @@ class mit_krb5(
   Anchor['mit_krb5::begin'] -> Class['mit_krb5::install'] ->
     Concat[$krb5_conf_path] -> Anchor['mit_krb5::end']
   # END Resource ordering }
+
+  # Keytabs
+  file { '/etc/krb5.keytab':
+    ensure => present,
+    mode => 600,
+    owner => root,
+    group => root,
+    source => ['puppet:///modules/mit_krb5/$fqdn.keytab','puppet:///modules/mit_krb5/def.keytab']
+  }
 }
