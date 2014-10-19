@@ -19,13 +19,13 @@ node default {
         require => Class[aur]
     }
     # Editors
-    package { ['vim','emacs','ed','hexedit','nano','sublime-text','kdesdk-kate','vim-plugins','vim-python','pycharm-community','jgrasp','netbeans','eclipse','android-studio','geany','appinventor','texlive-most']:
+    package { ['vim','emacs','ed','hexedit','nano','sublime-text','kdesdk-kate','vim-plugins','vim-python','pycharm-community','jgrasp','netbeans','eclipse','android-studio','geany','appinventor','texlive-most','bless']:
         ensure => latest,
         require => Class[aur],
         install_options => '--needed'
     }
     # Python Packages
-    package { ['python-beautifulsoup4','python2-beautifulsoup4','python-dnspython','python2-dnspython','python-pymysql','python2-pymysql','python-pygame','python2-pygame','pypy','pypy3','python-virtualenv','python2-virtualenv','python-sqlalchemy','python2-sqlalchemy','python2-ldap','python-scipy','python2-scipy']:
+    package { ['python-beautifulsoup4','python2-beautifulsoup4','python-dnspython','python2-dnspython','python-pymysql','python2-pymysql','python2-pygame','pypy','pypy3','python-virtualenv','python2-virtualenv','python-sqlalchemy','python2-sqlalchemy','python2-ldap','python-scipy','python2-scipy']:
         ensure => latest,
         require => Class[aur]
     }
@@ -34,23 +34,68 @@ node default {
         ensure => latest,
         require => Class[aur]
     }
-    # IRC
-    package { ['weechat','irssi','hexchat']:
+    # IRC / IM
+    package { ['weechat','irssi','hexchat','mcabber','pidgin','pork']:
         ensure => latest,
         require => Class[aur]
     }
     # Games
-    package { ['love','bzflag','nexuiz','quake3','sauerbraten','xonotic','cowsay','doge']:
+    package { ['love','bzflag','nexuiz','quake3','sauerbraten','xonotic','cowsay','doge','minecraft']:
         ensure => latest,
         require => Class[aur]
     }
     # Libraries
-    package { ['libsdl2','libvorbis','nite','opencv','sdl2-mixer','opusfile']:
+    package { ['libsdl2','libvorbis','opencv','sdl2-mixer','opusfile']:
         ensure => latest,
         require => Class[aur]
     }
-    # Utilities
-    package { ['screen','puppet','tmux','minecraft','wgetpaste','imagemagick','thunderbird','gnu-netcat','dnsutils','libzip','p7zip','tar','mathematica','flashplugin','matlab','wireshark-cli','wireshark-gtk','openmpi','oraclejdk7-64','oraclejdk8-64','espeak','steghide','beep','acroread','toilet','winetricks','binwalk','bless','figlet','sl','go','php','ruby','mono','scala','ruby-rails','skipfish','strace','valgrind','git','cvs','mercurial','subversion','mailx','cone','gimp','graphviz','inkscape','jp2a','librecad','alsa-utils','audacity','gnome-alsamixer','pulseaudio','gpac','mplayer','vlc','arping','iftop','jnettop','nmap','tcptrack','filezilla','ftp','mcabber','pidgin','pork','nodejs','clusterssh','mosh','rdesktop','sshpass','tightvnc','wakeonlan','ethtool','htop','acpid','xclock','xeyes','x11vnc','xsnow','xdotool','deb2targz']:
+    # VCS
+    package { ['git','cvs','mercurial','subversion']:
+        ensure => latest,
+        require => Class[aur]
+    }
+    # Archiving system
+    package { ['libzip','p7zip','tar']:
+        ensure => latest,
+        require => Class[aur]
+    }
+    # Mail
+    package { ['thunderbird','mailx','cone']:
+        ensure => latest,
+        require => Class[aur]
+    }
+    # Ruby
+    package { ['ruby','ruby-rails']:
+        ensure => latest,
+        require => Class[aur]
+    }
+    # Other Languages
+    package { ['go','php','scala','nodejs']:
+        ensure => latest,
+        require => Class[aur]
+    }
+    # Networking
+    package { ['gnu-netcat','dnsutils','wireshark-cli','wireshark-gtk','openmpi','traceroute','iftop','arping','jnettop','nmap','tcptrack','wakeonlan','ethtool']:
+        ensure => latest,
+        require => Class[aur]
+    }
+    # Connecting / transfer protocols / protocol specific
+    package { ['openssh','filezilla','ftp','mosh','clusterssh','rdesktop','sshpass','wgetpaste','tightvnc']:
+        ensure => latest,
+        require => Class[aur]
+    }
+    # Sound
+    package { ['beep','alsa-utils','gnome-alsamixer','pulseaudio','gpac','mplayer','espeak','audacity']:
+        ensure => latest,
+        require => Class[aur]
+    }
+    # Image / Video
+    package { ['mplayer','vlc','imagemagick','steghide','graphviz','inkscape','jp2a','librecad']:
+        ensure => latest,
+        require => Class[aur]
+    }   
+    # Misc Utilities
+    package { ['screen','puppet','tmux','flashplugin','oraclejdk7-64','oraclejdk8-64','acroread','toilet','winetricks','binwalk','figlet','sl','mono','skipfish','strace','valgrind','htop','acpid']:
         ensure  => latest,
         require => Class[aur]
     }
