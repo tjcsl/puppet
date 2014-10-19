@@ -1,112 +1,79 @@
-# nsswitch.conf module for Puppet
+# nsswitch
 
-A way of expressing nsswitch.conf configurations declaratively. This
-should manage the standard 15 databases NSS supports, plus the `sudo` entry
-respected by sudo since the 1.7.0 release.
+#### Table of Contents
 
-### Defaults
+1. [Overview](#overview)
+2. [Module Description - What the module does and why it is useful](#module-description)
+3. [Setup - The basics of getting started with nsswitch](#setup)
+    * [What nsswitch affects](#what-nsswitch-affects)
+    * [Setup requirements](#setup-requirements)
+    * [Beginning with nsswitch](#beginning-with-nsswitch)
+4. [Usage - Configuration options and additional functionality](#usage)
+5. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
+5. [Limitations - OS compatibility, etc.](#limitations)
+6. [Development - Guide for contributing to the module](#development)
 
-Currently this module has support for EL based Linux distributions,
-Fedora, Ubuntu, and Gentoo. This module by default will create a basic
-nsswitch.conf that uses defaults derived from what the distribution uses in
-the nsswitch.conf file on fresh install. These defaults have been verified
-on the mentioned distributions by the kindness and diligence of
-contributors, of which I'm very grateful.
+## Overview
 
-### Supported Systems
-This module should be capable of supporting the following systems:
- * Debian/Ubuntu
- * RHEL (Centos, RHEL6.x, Amazon)
- * Fedora
- * Oracle Linux 6.x
- * Gentoo
+A one-maybe-two sentence summary of what the module does/what problem it solves.
+This is your 30 second elevator pitch for your module. Consider including
+OS/Puppet version it works with.
 
-Testing has only confirmed functionality on the following:
-  * Ubuntu 12.4
-  * Fedora 19
+## Module Description
 
-### Usage
+If applicable, this section should have a brief description of the technology
+the module integrates with and what that integration enables. This section
+should answer the questions: "What does this module *do*?" and "Why would I use
+it?"
 
-#### nsswitch class
+If your module has a range of functionality (installation, configuration,
+management, etc.) this is the time to mention it.
 
-This is the class by which you will manage the nsswitch.conf file. There
-is one paramter per standard database NSS supports. The class accepts both strings 
-and arrays as paramters. The benefit being, you could possibly merge an array
-of options with hiera. When using an array, each element should be the
-lookup service followed by the reaction statement.
+## Setup
 
-Available parameters are:
+### What nsswitch affects
 
-* passwd
-* group
-* shadow
-* hosts
-* bootparams
-* aliases
-* automount
-* ethers
-* netgroup
-* netmasks
-* network
-* protocols
-* publickey
-* rpc
-* services
-* sudo
+* A list of files, packages, services, or operations that the module will alter,
+  impact, or execute on the system it's installed on.
+* This is a great place to stick any warnings.
+* Can be in list or paragraph form.
 
+### Setup Requirements **OPTIONAL**
 
-For more information on NSS, please see the man pages. `man 5 nsswitch.conf`
+If your module requires anything extra before setting up (pluginsync enabled,
+etc.), mention it here.
 
-#### Examples
+### Beginning with nsswitch
 
-```Puppet
-# defaults only
-include nsswitch
+The very basic steps needed for a user to get the module up and running.
 
-# setting a simple lookup
-class { 'nsswitch':
-  publickey => 'nis',
-}
+If your most recent release breaks compatibility or requires particular steps
+for upgrading, you may wish to include an additional section here: Upgrading
+(For an example, see http://forge.puppetlabs.com/puppetlabs/firewall).
 
-# 'hosts' lookups contain a reaction statement for the 'dns' service
-class { 'nsswitch':
-  passwd => ['ldap','files'],
-  hosts  => ['dns [!UNAVAIL=return]','files'],
-}
-```
-    
-#### Example nsswitch.conf with all defaults for RHEL systems
+## Usage
 
-    # This file is controlled by Puppet
+Put the classes, types, and resources for customizing, configuring, and doing
+the fancy stuff with your module here.
 
-    passwd:     files
-    shadow:     files
-    group:      files
-    hosts:      files dns
-    bootparams: nisplus [NOTFOUND=return] files
-    ethers:     files
-    netmasks:   files
-    networks:   files
-    protocols:  files
-    rpc:        files
-    services:   files
-    netgroup:   nisplus
-    publickey:  nisplus
-    automount:  files nisplus
-    aliases:    files nisplus
+## Reference
 
-#### License
-   Copyright 2013 Thomas Linkin <tom@puppetlabs.com>
+Here, list the classes, types, providers, facts, etc contained in your module.
+This section should include all of the under-the-hood workings of your module so
+people know what the module is touching on their system but don't need to mess
+with things. (We are working on automating this section!)
 
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
+## Limitations
 
-     http://www.apache.org/licenses/LICENSE-2.0
+This is where you list OS compatibility, version compatibility, etc.
 
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
+## Development
 
+Since your module is awesome, other users will want to play with it. Let them
+know what the ground rules for contributing are.
+
+## Release Notes/Contributors/Etc **Optional**
+
+If you aren't using changelog, put your release notes here (though you should
+consider using changelog). You may also add any additional sections you feel are
+necessary or important to include here. Please use the `## ` header.

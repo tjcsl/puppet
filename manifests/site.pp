@@ -6,6 +6,7 @@ node default {
     include openafs
     include pam
     include ldap
+    include nsswitch
     class { '::ntp':
           servers => [ 'ntp1.tjhsst.edu', 'ntp2.tjhsst.edu' ],
     }
@@ -29,11 +30,6 @@ node default {
     mit_krb5::domain_realm { 'LOCAL.TJHSST.EDU':
         domains => ['local.tjhsst.edu','.local.tjhsst.edu']
     }
-    class { 'nsswitch':
-        passwd => ['compat','ldap'],
-        shadow => 'compat',
-        group => ['compat','ldap']
-    }    
     package { 'linux-headers':
         ensure => installed
     }
