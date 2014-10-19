@@ -23,6 +23,10 @@ node default {
             'PasswordAuthentication' => 'no'
         }
     }
+    file { '/etc/issue':
+        ensure => file,
+        source => 'puppet:///issue'
+    }
     mit_krb5::realm { 'CSL.TJHSST.EDU':
         kdc => ['kdc1.tjhsst.edu','kdc2.tjhsst.edu'],
         admin_server => 'kerberos.tjhsst.edu',
