@@ -7,6 +7,26 @@ node default {
     class { '::ntp':
           servers => [ 'ntp1.tjhsst.edu', 'ntp2.tjhsst.edu' ],
     }
+    class { 'mit_krb5':
+        default_realm => 'CSL.TJHSST.EDU',
+        permitted_enctypes => ['des-cbc-crc', 'des-cbc-md5'],
+        allow_weak_crypto => true
+    }
+    mit_krb5::realm { 'CSL.TJHSST.EDU':
+        kdc => ['kdc1.tjhsst.edu','kdc2.tjhsst.edu'],
+        admin_server => 'kerberos.tjhsst.edu',
+        auth_to_local => ['RULE:[1:$1@$0](^.*@LOCAL\.TJHSST\.EDU$)s/@.*$//','DEFAULT']
+    }
+    mit_krb5::realm { 'LOCAL.TJHSST.EDU':
+        kdc => ['198.38.27.6','tj05.local.tjhsst.edu','tj07.local.tjhsst.edu'],
+        admin_server => 'tj07.local.tjhsst.edu'
+    }
+    mit_krb5::domain_realm { 'CSL.TJHSST.EDU':
+        domains => ['.tjhsst.edu','tjhsst.edu','.csl.tjhsst.edu','csl.tjhsst.edu']
+    }
+    mit_krb5::domain_realm { 'LOCAL.TJHSST.EDU':
+        domains => ['local.tjhsst.edu','.local.tjhsst.edu']
+    }
     package { 'linux-headers':
         ensure => installed
     }
