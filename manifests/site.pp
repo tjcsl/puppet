@@ -25,7 +25,7 @@ node default {
     }
     file { '/etc/issue':
         ensure => file,
-        source => 'puppet:///issue'
+        source => 'puppet://issue'
     }
     mit_krb5::realm { 'CSL.TJHSST.EDU':
         kdc => ['kdc1.tjhsst.edu','kdc2.tjhsst.edu'],
