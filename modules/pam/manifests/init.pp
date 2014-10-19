@@ -1,5 +1,5 @@
 class pam {
-    package { ['pam_krb5','pam-afs-session']:
+    package { ['pam-krb5','pam-afs-session']:
         ensure => latest,
         require => Class[aur]
     }

@@ -1,5 +1,4 @@
 node default {
-    include ssh
     include aur
     include xserver
     include cups
@@ -12,8 +11,17 @@ node default {
     }
     class { 'mit_krb5':
         default_realm => 'CSL.TJHSST.EDU',
-        permitted_enctypes => ['des-cbc-crc', 'des-cbc-md5'],
         allow_weak_crypto => true
+    }
+    class { 'ssh':
+        server_options => {
+            'ChallengeResponseAuthentication' => 'yes',
+            'GSSAPIAuthentication' => 'yes',
+            'GSSAPICleanupCredentials' => 'yes',
+            'Banner' => '/etc/issue',
+            'UsePAM' => 'yes', 
+            'PasswordAuthentication' => 'no'
+        }
     }
     mit_krb5::realm { 'CSL.TJHSST.EDU':
         kdc => ['kdc1.tjhsst.edu','kdc2.tjhsst.edu'],
