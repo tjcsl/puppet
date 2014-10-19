@@ -50,7 +50,7 @@ node default {
         require => Class[aur]
     }
     # Libraries
-    package { ['sdl2','libvorbis','opencv','sdl2-mixer','opusfile']:
+    package { ['sdl2','libvorbis','opencv','sdl2_mixer','opusfile']:
         ensure => latest,
         require => Class[aur]
     }
