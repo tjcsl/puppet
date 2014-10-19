@@ -80,7 +80,7 @@ node default {
         require => Class[aur]
     }
     # Connecting / transfer protocols / protocol specific
-    package { ['openssh','filezilla','ftp','mosh','clusterssh','rdesktop','sshpass','wgetpaste','tightvnc']:
+    package { ['openssh','filezilla','lftp','mosh','clusterssh','rdesktop','sshpass','wgetpaste','tightvnc']:
         ensure => latest,
         require => Class[aur]
     }
