@@ -7,6 +7,7 @@ node default {
     include ldap
     include nsswitch
     include polkit
+    include math
     class { '::ntp':
           servers => [ 'ntp1.tjhsst.edu', 'ntp2.tjhsst.edu' ],
     }

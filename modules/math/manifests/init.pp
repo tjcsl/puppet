@@ -1,7 +1,25 @@
 class math {
-    package { ['matlab','mathematica']:
+    file { '/opt/Mathematica_10.0.1_LINUX.sh':
+        ensure => file,
+        source => 'puppet:///modules/math/Mathematica_10.0.1_LINUX.sh'
+    }
+    file { '/tmp/yaourt-tmp-root/aur-mathematica/':
+        ensure => directory,
+        require => Class[aur]
+    }
+    file { '/tmp/yaourt-tmp-root/aur-mathematica/Mathematica_10.0.1_LINUX.sh':
+        ensure => link,
+        target => '/opt/Mathematica_10.0.1_LINUX.sh',
+        require => File['/tmp/yaourt-tmp-root/aur-mathematica/']
+    }
+    file { '/opt/mathematica/Configuration/Licensing/mathpass':
+        ensure => file,
+        source => 'puppet:///modules/math/mathpass',
+        require => Package[mathematica]
+    }
+    package { 'mathematica':
         ensure => installed,
-        require => [File[
+        require => [File['/tmp/yaourt-tmp-root/aur-mathematica/Mathematica_10.0.1_LINUX.sh'],Class[aur]]
     }
 
 }
