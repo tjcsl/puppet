@@ -4,7 +4,7 @@ class ldap {
         require => Class[aur]
     }
     file { '/etc/ldap.conf':
-        source => 'puppet:///modules/ldap/ldap.conf'
+        source => 'puppet:///modules/ldap/ldap.conf',
         require => Package[openldap]
     }
 }
