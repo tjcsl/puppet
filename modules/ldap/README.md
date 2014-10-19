@@ -1,150 +1,79 @@
-Puppet OpenLDAP Module
-======================
+# ldap
 
-Introduction
-------------
+#### Table of Contents
 
-Puppet module to manage client and server configuration for
-**OpenLdap**.
+1. [Overview](#overview)
+2. [Module Description - What the module does and why it is useful](#module-description)
+3. [Setup - The basics of getting started with ldap](#setup)
+    * [What ldap affects](#what-ldap-affects)
+    * [Setup requirements](#setup-requirements)
+    * [Beginning with ldap](#beginning-with-ldap)
+4. [Usage - Configuration options and additional functionality](#usage)
+5. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
+5. [Limitations - OS compatibility, etc.](#limitations)
+6. [Development - Guide for contributing to the module](#development)
 
-## Usage ##
+## Overview
 
-### Ldap client ###
+A one-maybe-two sentence summary of what the module does/what problem it solves.
+This is your 30 second elevator pitch for your module. Consider including
+OS/Puppet version it works with.
 
-Ldap client configuration at its simplest:
+## Module Description
 
+If applicable, this section should have a brief description of the technology
+the module integrates with and what that integration enables. This section
+should answer the questions: "What does this module *do*?" and "Why would I use
+it?"
 
-    class { 'ldap':
-    	uri  => 'ldap://ldapserver00 ldap://ldapserver01',
-    	base => 'dc=foo,dc=bar'
-    }
+If your module has a range of functionality (installation, configuration,
+management, etc.) this is the time to mention it.
 
+## Setup
 
-Enable TLS/SSL:
+### What ldap affects
 
-Note that *ssl_cert* should be the CA's certificate file, and
-it should be located under *puppet:///files/ldap/*.
+* A list of files, packages, services, or operations that the module will alter,
+  impact, or execute on the system it's installed on.
+* This is a great place to stick any warnings.
+* Can be in list or paragraph form.
 
-    class { 'ldap':
-    	uri      => 'ldap://ldapserver00 ldap://ldapserver01',
-    	base     => 'dc=foo,dc=bar',
-    	ssl      => true,
-    	ssl_cert => 'ldapserver.pem'
-    }
+### Setup Requirements **OPTIONAL**
 
-Enable nsswitch and pam configuration (requires both modules):
+If your module requires anything extra before setting up (pluginsync enabled,
+etc.), mention it here.
 
-    class { 'ldap':
-      uri      => 'ldap://ldapserver00 ldap://ldapserver01',
-      base     => 'dc=foo,dc=bar',
-      ssl      => true
-      ssl_cert => 'ldapserver.pem',
+### Beginning with ldap
 
-      nsswitch   => true,
-      nss_passwd => 'ou=users',
-      nss_shadow => 'ou=users',
-      nss_group  => 'ou=groups',
+The very basic steps needed for a user to get the module up and running.
 
-      pam        => true,
-    }
+If your most recent release breaks compatibility or requires particular steps
+for upgrading, you may wish to include an additional section here: Upgrading
+(For an example, see http://forge.puppetlabs.com/puppetlabs/firewall).
 
-### OpenLdap Server ###
+## Usage
 
-#### Master server ####
+Put the classes, types, and resources for customizing, configuring, and doing
+the fancy stuff with your module here.
 
-OpenLdap server as simple as it is:
+## Reference
 
-    class { 'ldap::server::master':
-      suffix      => 'dc=foo,dc=bar',
-      rootpw      => '{SHA}iEPX+SQWIR3p67lj/0zigSWTKHg=',
-    }
+Here, list the classes, types, providers, facts, etc contained in your module.
+This section should include all of the under-the-hood workings of your module so
+people know what the module is touching on their system but don't need to mess
+with things. (We are working on automating this section!)
 
-Configure an OpenLdap master with syncrepl enabled:
+## Limitations
 
-    class { 'ldap::server::master':
-      suffix      => 'dc=foo,dc=bar',
-      rootpw      => '{SHA}iEPX+SQWIR3p67lj/0zigSWTKHg=',
-      syncprov    => true,
-      sync_binddn => 'cn=sync,dc=foo,dc=bar',
-      modules_inc => [ 'syncprov' ],
-      schema_inc  => [ 'gosa/samba3', 'gosa/gosystem' ],
-      index_inc   => [
-        'index memberUid            eq',
-        'index mail                 eq',
-        'index givenName            eq,subinitial',
-        ],
-    }
+This is where you list OS compatibility, version compatibility, etc.
 
-With TLS/SSL enabled:
+## Development
 
-    class { 'ldap::server::master':
-      suffix      => 'dc=foo,dc=bar',
-      rootpw      => '{SHA}iEPX+SQWIR3p67lj/0zigSWTKHg=',
-      ssl         => true,
-      ssl_ca      => 'ca.pem',
-      ssl_cert    => 'master-ldap.pem',
-      ssl_key     => 'master-ldap.key',
-    }
+Since your module is awesome, other users will want to play with it. Let them
+know what the ground rules for contributing are.
 
-*NOTE*: SSL certificates should reside in you puppet master
-file repository 'puppet:///files/ldap/'
+## Release Notes/Contributors/Etc **Optional**
 
-#### Slave server ####
-
-Configure an OpenLdap slave:
-
-    class { 'ldap::server::slave':
-      suffix        => 'dc=foo,dc=bar',
-      rootpw        => '{SHA}iEPX+SQWIR3p67lj/0zigSWTKHg=',
-      sync_rid      => '1234',
-      sync_provider => 'ldap://ldapmaster'
-      sync_updatedn => 'cn=admin,dc=foo,dc=bar',
-      sync_binddn   => 'cn=sync,dc=foo,dc=bar',
-      sync_bindpw   => 'super_secret',
-      schema_inc    => [ 'gosa/samba3', 'gosa/gosystem' ],
-      index_inc     => [
-        'index memberUid            eq',
-        'index mail                 eq',
-        'index givenName            eq,subinitial',
-        ],
-    }
-
-Notes
------
-
-Ldap client / server configuration tested on:
-
- * Debian:   5     / 6   / 7
- * Redhat:   5.x   / 6.x
- * CentOS:   5.x   / 6.x
- * OpenSuSe: 12.x
- * SLES:     11.x
-
-Should also work on (I'd appreciate reports on this distros and versions):
-
- * Ubuntu
- * Fedora
- * Scientific Linux 6
-
-Requirements
-------------
-
- * If nsswitch is enabled (nsswitch => true) you'll need
-   [puppet-nsswitch](https://github.com/torian/puppet-nsswitch.git)
- * If pam is enabled (pam => true) you'll need
-   [puppet-pam](https://github.com/torian/puppet-pam.git)
- * If enable_motd is enabled (enable_motd => true) you'll need
-   [puppet-motd](https://github.com/torian/puppet-motd.git)
-
-TODO
-----
-
- * ldap::server::master and ldap::server::slave do not copy
-   the schemas specified by *index_inc*. It just adds an include to slapd
- * Need support for extending ACLs
-
-CopyLeft
----------
-
-Copyleft (C) 2012 Emiliano Castagnari <ecastag@gmail.com> (a.k.a. Torian)
-
+If you aren't using changelog, put your release notes here (though you should
+consider using changelog). You may also add any additional sections you feel are
+necessary or important to include here. Please use the `## ` header.
