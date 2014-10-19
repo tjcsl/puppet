@@ -15,11 +15,13 @@ class math {
     file { '/opt/mathematica/Configuration/Licensing/mathpass':
         ensure => file,
         source => 'puppet:///modules/math/mathpass',
-#        require => Package[mathematica]
+        require => Exec[mathematica]
     }
-    /*package { 'mathematica':
-        ensure => installed,
+    exec { 'mathematica':
+        path => '/usr/bin/:/bin/',
+        command => 'cd /tmp/yaourt-tmp-root/aur-mathematica/;wget https://aur.archlinux.org/packages/ma/mathematica/mathematica.tar.gz;tar -xf mathematica.tar.gz mathematica/;makepkg -csir;cd ..;rm -rf aur-mathematica;',
+        unless => 'which math',
         require => [File['/tmp/yaourt-tmp-root/aur-mathematica/Mathematica_10.0.1_LINUX.sh'],Class[aur]]
-    }*/
+    }
 
 }
