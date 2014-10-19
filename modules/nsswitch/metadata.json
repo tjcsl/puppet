@@ -1,0 +1,13 @@
+{
+  "name": "trlinkin-nsswitch",
+  "version": "0.0.8",
+  "author": "Thomas Linkin",
+  "summary": "Module for managing the nsswitch.",
+  "license": "Apache 2.0",
+  "source": "https://github.com/trlinkin/puppet-nsswitch",
+  "project_page": "https://github.com/trlinkin/puppet-nsswitch",
+  "issues_url": "https://github.com/trlinkin/puppet-nsswitch/issues",
+  "dependencies": [
+    {"name":"trlinkin/validate_multi","version_requirement":">=0.1.0"}
+  ]
+}

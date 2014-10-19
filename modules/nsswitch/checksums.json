@@ -1,0 +1,7 @@
+{
+  "Modulefile": "840d3b17449103a66bee57062f9ccfb3",
+  "README.md": "c2979cf5ca4acbfac45940b68a8b0c36",
+  "manifests/init.pp": "3a0965a1669b8d9a22eee7ce5add0bac",
+  "manifests/params.pp": "465f2c733ab6e416a7b6a6880a2e3afd",
+  "templates/nsswitch.conf.erb": "aa12d2fcd095f88a8ea77954c4b4a452"
+}
