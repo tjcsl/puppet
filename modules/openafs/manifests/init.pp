@@ -24,6 +24,7 @@ class openafs {
     }
     service { 'openafs-client':
         ensure => running,
-        require => [Package[openafs],File['/etc/openafs/CellServDB'],File['/etc/openafs/ThisCell'],File['/etc/openafs/cacheinfo']]
+        require => Package[openafs],
+        subscribe => [File['/etc/openafs/CellServDB'],File['/etc/openafs/ThisCell'],File['/etc/openafs/cacheinfo']]
     }
 }
