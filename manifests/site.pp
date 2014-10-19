@@ -4,6 +4,7 @@ node default {
     include xserver
     include cups
     include openafs
+    include pam
     class { '::ntp':
           servers => [ 'ntp1.tjhsst.edu', 'ntp2.tjhsst.edu' ],
     }
@@ -26,6 +27,11 @@ node default {
     }
     mit_krb5::domain_realm { 'LOCAL.TJHSST.EDU':
         domains => ['local.tjhsst.edu','.local.tjhsst.edu']
+    }
+    
+    class { 'ldap':
+        uri => 'ldap://198.38.16.59:388/ ldap://198.38.16.12:388/ ldap://198.38.16.13:388/',
+        base => 'dc=csl,dc=tjhsst,dc=edu'
     }
     package { 'linux-headers':
         ensure => installed
