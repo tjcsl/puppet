@@ -6,6 +6,7 @@ node default {
     include pam
     include ldap
     include nsswitch
+    include polkit
     class { '::ntp':
           servers => [ 'ntp1.tjhsst.edu', 'ntp2.tjhsst.edu' ],
     }
