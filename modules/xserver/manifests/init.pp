@@ -22,7 +22,7 @@ class xserver {
         install_options => '--needed'
     }
     # X utilities
-    package { ['xclock','xeyes','x11vnc','xsnow','xdotool']:
+    package { ['xorg-xclock','xorg-xeyes','x11vnc','xsnow','xdotool']:
         ensure => latest,
         require => [Package[xorg-server],Class[aur]]
     }
