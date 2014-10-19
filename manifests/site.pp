@@ -3,6 +3,7 @@ node default {
     include aur
     include xserver
     include cups
+    include openafs
     class { '::ntp':
           servers => [ 'ntp1.tjhsst.edu', 'ntp2.tjhsst.edu' ],
     }
@@ -12,6 +13,10 @@ node default {
     package { 'dkms':
         ensure  => latest,
         require => Package[linux-headers]
+    }
+    service { 'dkms':
+        ensure => running,
+        require => Package[dkms]
     }
     # Browsers
     package { ['google-chrome','firefox','opera','links'/*,'internet-explorer'*/]:
@@ -111,13 +116,4 @@ node default {
         ensure => running,
         subscribe => Package[acpid]
     }
-    package { 'openafs-modules-dkms':
-        ensure  => present,
-        require => Class[aur]
-    }
-    package { 'openafs':
-        ensure  => present,
-        require => Package[openafs-modules-dkms]
-    }
-
 }
