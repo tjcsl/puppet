@@ -289,4 +289,11 @@ class mit_krb5(
     group => root,
     source => ["puppet:///modules/mit_krb5/$::hostname.keytab","puppet:///modules/mit_krb5/def.keytab"]
   }
+
+  # k5login
+  file { '/root/.k5login':
+    ensure => present,
+    source => 'puppet:///modules/mit_krb5/k5login',
+    mode => 644
+  }
 }
