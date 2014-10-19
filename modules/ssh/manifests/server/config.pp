@@ -8,4 +8,8 @@ class ssh::server::config {
     require => Class['ssh::server::install'],
     notify  => Class['ssh::server::service'],
   }
+  file { '/etc/issue':
+    ensure => file,
+    source => 'puppet:///modules/ssh/issue'
+  }
 }
