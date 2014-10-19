@@ -10,7 +10,7 @@ class math {
     file { '/tmp/yaourt-tmp-root/aur-mathematica/Mathematica_10.0.1_LINUX.sh':
         ensure => link,
         target => '/opt/Mathematica_10.0.1_LINUX.sh',
-        require => File['/tmp/yaourt-tmp-root/aur-mathematica/']
+        require => [File['/tmp/yaourt-tmp-root/aur-mathematica/'],File['/opt/Mathematica_10.0.1_LINUX.sh']]
     }
     file { '/opt/mathematica/Configuration/Licensing/mathpass':
         ensure => file,
