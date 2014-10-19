@@ -96,7 +96,7 @@ node default {
         require => Class[aur]
     }
     # Image / Video
-    package { ['mplayer','vlc','imagemagick','steghide','graphviz','inkscape','jp2a','librecad']:
+    package { ['vlc','imagemagick','steghide','graphviz','inkscape','jp2a','librecad']:
         ensure => latest,
         require => Class[aur]
     }   
