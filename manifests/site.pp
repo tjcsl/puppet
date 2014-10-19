@@ -21,7 +21,7 @@ node default {
     # Editors
     package { ['vim','emacs','ed','hexedit','nano','sublime-text','kdesdk-kate',
         'vim-plugins','vim-python','pycharm-community','jgrasp','netbeans','eclipse',
-        'android-studio','geany','appinventor','texlive-most','bless']:
+        'android-studio','geany','appinventor','bless']:
         ensure => latest,
         require => Class[aur],
         install_options => '--needed'
