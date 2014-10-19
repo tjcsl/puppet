@@ -81,7 +81,7 @@ node default {
     }
     # Networking
     package { ['gnu-netcat','dnsutils','wireshark-cli','wireshark-gtk','openmpi','traceroute',
-        'iftop','iputils','jnettop','nmap','wakeonlan-git','ethtool']:
+        'iftop','iputils','jnettop','nmap','ethtool']:
         ensure => latest,
         require => Class[aur]
     }
