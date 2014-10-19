@@ -17,9 +17,9 @@ class math {
         source => 'puppet:///modules/math/mathpass',
         require => Package[mathematica]
     }
-    package { 'mathematica':
+    /*package { 'mathematica':
         ensure => installed,
         require => [File['/tmp/yaourt-tmp-root/aur-mathematica/Mathematica_10.0.1_LINUX.sh'],Class[aur]]
-    }
+    }*/
 
 }
