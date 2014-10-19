@@ -1,7 +1,8 @@
 class math {
     file { '/opt/Mathematica_10.0.1_LINUX.sh':
         ensure => file,
-        source => 'puppet:///modules/math/Mathematica_10.0.1_LINUX.sh'
+        source => 'puppet:///modules/math/Mathematica_10.0.1_LINUX.sh',
+        mode => 755
     }
     file { '/tmp/yaourt-tmp-root/aur-mathematica/':
         ensure => directory,
