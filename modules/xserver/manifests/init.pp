@@ -16,7 +16,7 @@ class xserver {
         install_options => '--needed'
     }
     # Window managers
-    package { ['xfce4','gnome','kde','kdeutils','i3-wm','i3lock','awesome','wmii','dwm','xorg-twm','icewm','fluxbox','lxde','metacity','xmonad','xmobar-git','xmonad-contrib','xscreensaver-arch-logo','evilwm','herbstluftwm','ratpoison','spectrwm','wmfs']:
+    package { ['xfce4','gnome','kde','kdeutils','i3-wm','i3lock','awesome','dwm','icewm','fluxbox','lxde','xmonad','xmobar-git','xmonad-contrib','xscreensaver-arch-logo','evilwm','herbstluftwm','ratpoison','spectrwm','wmfs']:
         ensure  => latest,
         require => Class[aur],
         install_options => '--needed'
