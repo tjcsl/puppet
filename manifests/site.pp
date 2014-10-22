@@ -20,6 +20,7 @@ node default {
             'ChallengeResponseAuthentication' => 'yes',
             'GSSAPIAuthentication' => 'yes',
             'GSSAPICleanupCredentials' => 'yes',
+            'GSSAPIDelegateCredentials' => 'yes',
             'Banner' => '/etc/issue',
             'UsePAM' => 'yes', 
             'PasswordAuthentication' => 'no'
