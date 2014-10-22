@@ -7,7 +7,7 @@ class cups {
         source => 'puppet:///modules/cups/client.conf',
         notify => Service[cupsd]
     }
-    service { 'cupsd':
+    service { 'cups':
         ensure => running,
         enable => true,
         require => Package[cups]
