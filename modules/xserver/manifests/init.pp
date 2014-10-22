@@ -34,7 +34,7 @@ class xserver {
     service { 'lightdm':
         ensure    => running,
         enable => true,
-        require   => Package[lightdm],
+        require   => [Package[lightdm],Package[lightdm-gtk3-greeter]],
         subscribe => Package[lightdm],
     }
     file { '/etc/lightdm/lightdm.conf.d/50-myconfig.conf':
