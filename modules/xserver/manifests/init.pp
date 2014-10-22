@@ -27,7 +27,7 @@ class xserver {
         require => [Package[xorg-server],Class[aur]]
     }
     # lightdm
-    package { 'lightdm':
+    package { ['lightdm','lightdm-gtk3-greeter']:
         ensure  => latest,
     }
     # Start lightdm
