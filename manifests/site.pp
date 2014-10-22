@@ -49,6 +49,7 @@ node default {
     }
     service { 'dkms':
         ensure => running,
+        enable => true,
         require => Package[dkms]
     }
     # Browsers
@@ -147,6 +148,7 @@ node default {
     }
     service { 'acpid':
         ensure => running,
+        enable => true,
         subscribe => Package[acpid]
     }
 }

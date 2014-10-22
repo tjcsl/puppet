@@ -33,6 +33,7 @@ class xserver {
     # Start gdm
     service { 'gdm':
         ensure    => running,
+        enable => true,
         require   => Package[gdm],
         subscribe => Package[gdm],
     }

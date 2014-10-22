@@ -9,6 +9,7 @@ class cups {
     }
     service { 'cupsd':
         ensure => running,
+        enable => true,
         require => Package[cups]
     }
 }
