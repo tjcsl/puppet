@@ -37,6 +37,11 @@ class xserver {
         require   => Package[lightdm],
         subscribe => Package[lightdm],
     }
+    file { '/etc/lightdm/lightdm.conf.d/50-myconfig.conf':
+        source => 'puppet:///modules/xserver/lightdm.conf',
+        mode => 644,
+        notify => Service[lightdm]
+    }
     exec { 'reboot machine':
         command     => '/sbin/reboot',
         subscribe   => Exec[nvidia-dkms],
