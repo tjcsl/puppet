@@ -22,20 +22,20 @@ class xserver {
         install_options => '--needed'
     }
     # X utilities
-    package { ['xorg-xclock','xorg-xeyes','x11vnc','xsnow','xdotool']:
+    package { ['xorg-xclock','xorg-xeyes','x11vnc','xsnow','xdotool','rxvt-unicode']:
         ensure => latest,
         require => [Package[xorg-server],Class[aur]]
     }
-    # GDM
-    package { 'gdm':
+    # lightdm
+    package { 'lightdm':
         ensure  => latest,
     }
-    # Start gdm
-    service { 'gdm':
+    # Start lightdm
+    service { 'lightdm':
         ensure    => running,
         enable => true,
-        require   => Package[gdm],
-        subscribe => Package[gdm],
+        require   => Package[lightdm],
+        subscribe => Package[lightdm],
     }
     exec { 'reboot machine':
         command     => '/sbin/reboot',
