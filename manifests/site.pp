@@ -140,7 +140,7 @@ node default {
         require => Class[aur]
     }   
     # Misc Utilities
-    package { ['screen','puppet','tmux','flashplugin','oraclejdk7-64','oraclejdk8-64','acroread',
+    package { ['screen','puppet','tmux','flashplugin','jdk7-openjdk','jre7-openjdk','jdk8-openjdk','jre8-openjdk','acroread',
         'toilet','winetricks','binwalk','figlet','sl','mono','skipfish','strace','valgrind',
         'htop','acpid']:
         ensure  => latest,
