@@ -18,6 +18,7 @@ class ldap {
     }
     service { 'nslcd':
         ensure => running,
+        enable => true,
         require => Package[nss-pam-ldapd]
     }
 }
