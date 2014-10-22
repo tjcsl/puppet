@@ -5,7 +5,7 @@ class cups {
     file { '/etc/cups/client.conf':
         ensure => present,
         source => 'puppet:///modules/cups/client.conf',
-        notify => Service[cupsd]
+        notify => Service[cups]
     }
     service { 'cups':
         ensure => running,
